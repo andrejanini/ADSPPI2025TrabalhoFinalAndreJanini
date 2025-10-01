@@ -1,0 +1,25 @@
+{
+  "name": "adsppi2025trabalhofinalandrejanini",
+  "version": "1.0.0",
+  "description": "Trabalho Final ADS Programação Para Internet 2º semestre 2025",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrejanini/ADSPPI2025TrabalhoFinalAndreJanini.git"
+  },
+  "author": "André Janini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrejanini/ADSPPI2025TrabalhoFinalAndreJanini/issues"
+  },
+  "homepage": "https://github.com/andrejanini/ADSPPI2025TrabalhoFinalAndreJanini#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  }
+}
