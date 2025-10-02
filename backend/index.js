@@ -22,7 +22,7 @@ app.use(express.urlencoded({
 app.post('/login', (requisicao, resposta) => {
     const usuario = requisicao.body.usuario;
     const senha = requisicao.body.senha;
-    const urlDestino = requisicao.session.urlDesino || '../frontend/index.html';
+    const urlDestino = requisicao.session.urlDesino || '/index.html';
     
     if (usuario == 'admin' && senha == 'admin') {
         requisicao.session.autenticado = true;
@@ -38,9 +38,9 @@ app.get('/logout', (requisicao, resposta) => {
     resposta.redirect('/login.html');
 });
 
-app.use(express.static('../publico'));
+app.use(express.static('frontend/publico'));
 
-app.use(verificarAutenticacao, express.static('../privado'));
+app.use(verificarAutenticacao, express.static('frontend/privado'));
 
 app.listen(porta, host, () => {
     console.log(`Servidor em execução em http://${host}:${porta}`);
