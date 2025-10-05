@@ -24,10 +24,11 @@ export default class ClienteDAO {
             const conexao = await conectar();
             const sql = "UPDATE cliente SET cli_cpf = ?, cli_nome = ?, cli_telefone = ?, cli_email = ? WHERE cli_cpf = ?";
             const parametros = [                
-                curso.cpf,
-                curso.nome,
-                curso.telefone,
-                curso.email,                
+                cliente.cpf,
+                cliente.nome,
+                cliente.telefone,
+                cliente.email,
+                cliente.cpf              
             ];
 
             await conexao.execute(sql, parametros);

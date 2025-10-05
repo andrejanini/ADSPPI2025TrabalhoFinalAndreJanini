@@ -4,80 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <title>Página de cadastro</title>
+    <title>Cadastro de clientes</title>
+    <style>
+        .form-control.is-invalid,
+        .form-select.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(.375em + .1875rem) center;
+            background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+        }
+        
+        .form-control.is-valid,
+        .form-select.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(.375em + .1875rem) center;
+            background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color:antiquewhite">
             <a class="navbar-brand mb-2">Mercado de Livros Raros</a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Página inicial</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Página inicial</a>
                     </li>                    
+                    
                     <div class="d-flex p-1">
-                        <a class="btn btn-outline-success" href="login.html">Login</a>
-                    </div>                              
+                        <a class="btn btn-dark" href="login.html">Login</a>
+                    </div>
+                    
+                    <div class="d-flex p-1">
+                        <a class="btn btn-dark" href="livros.html">Livros</a>
+                    </div>
                 </ul>            
             </div>
         </div>
     </nav>
     <div class="container mt-2 mb-2">
-        <div class="card p-5" style="background-color: #03315E;">
-            <div style="color: #2DE2B9">
+        <div class="card p-5" style="background-color: #2e2a24;">
+            
+            <div style="color: #fbb040">
                 <h1 class="text-center">Cadastro de Clientes</h1>
             </div>
-            <div style="color: white">
+
+            <div style="color:antiquewhite ">
                 <h4 class="text-center">Preencha os dados no formulário abaixo.</h4>
             </div>
         </div>
-        <div class="container card mt-3 mb-2 p-5">                        
-            <form id="form-clientes" class="row g-3 needs-validation">
+
+        <div class="container card mt-3 mb-2 p-5">
+            <form id="form-clientes" class="row g-3 needs-validation" novalidate>
+                <div class="row">
+
+                    <div class="p-2 col-12"> 
+                        <div class="col-md-4">
+                            <label for="cpf" class="form-label">CPF *</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" 
+                                   placeholder="000.000.000-00" maxlength="14" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um CPF válido.
+                            </div>
+                            <div class="valid-feedback">
+                                CPF válido!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-2 col-12">
+                        <div class="col-md-8">
+                            <label for="nome" class="form-label">Nome completo *</label>
+                            <input type="text" id="nome" name="nome" class="form-control" 
+                                   placeholder="Digite o nome completo" minlength="3" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe o nome completo (mínimo 3 caracteres).
+                            </div>
+                            <div class="valid-feedback">
+                                Nome válido!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-2 col-12">
+                        <div class="col-md-4">
+                            <label for="telefone" class="form-label">Telefone *</label>
+                            <input type="text" id="telefone" name="telefone" class="form-control" 
+                                   placeholder="(00) 00000-0000" maxlength="15" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um telefone válido.
+                            </div>
+                            <div class="valid-feedback">
+                                Telefone válido!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-2 col-12">
+                        <div class="col-md-8">
+                            <label for="email" class="form-label">E-mail *</label>
+                            <input type="email" id="email" name="email" class="form-control" 
+                                   placeholder="exemplo@email.com" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um e-mail válido.
+                            </div>
+                            <div class="valid-feedback">
+                                E-mail válido!
+                            </div>
+                        </div>
+                    </div>
                 
-            <div class="row">
-            <div class="p-2 col-12"> 
-                <div class="col-md-2">
-                    <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" required>
                 </div>
-            </div>
-
-            <div class="p-2 col-12">
-                <div class="col-md-6">
-                    <label for="nome" class="form-label">Nome completo</label>
-                    <input type="text" id="nome" name="nome" class="form-control" required>
-                </div>
-            </div>
-
-            <div class="p-2 col-12">
-                <div class="col-md-2">
-                    <label for="telefone" class="form-label">Telefone</label>
-                    <input type="text" id="telefone" name="telefone" class="form-control" required>
-                </div>
-            </div>
-
-            <div class="p-2 col-12">
-                <div class="col-md-6">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-            </div>
-            </div>
-                
+                    
                 <div class="p-2" style="text-align: center;">
-                    <button id="btn-cadastrar-curso" class="btn btn-primary" type="submit">Cadastrar</button>
+                    <button id="btn-cadastrar-cliente" class="btn btn-primary" type="submit">Cadastrar</button>
                     <button id="btn-atualizar" class="btn btn-warning" type="button" disabled>Atualizar</button>
                     <button id="btn-excluir" class="btn btn-danger" type="button" disabled>Excluir</button>
-                </div>                
+                    <button id="btn-limpar" class="btn btn-secondary" type="button" onclick="prepararTela()">Limpar</button>
+                </div>
             </form>
         </div>
+        
         <div id="tabela" class="m-3 container">
+            
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>    
-    <script src="/js/novo-curso.js"></script>
+    <script src="../js/clientes.js"></script>
 </body>
 </html>

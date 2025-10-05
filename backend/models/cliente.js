@@ -1,27 +1,18 @@
 import ClienteDAO from "../db/clienteDAO.js";
 
-export default class Cliente {    
-    #id;
+export default class Cliente {
     #cpf;
     #nome;
     #telefone;
     #email;    
 
-    constructor(id = "", cpf = "", nome = "", telefone = "", email = "") {
-        this.#id = id;
+    constructor(cpf = "", nome = "", telefone = "", email = "") {
         this.#cpf = cpf;
         this.#nome = nome;
         this.#telefone = telefone;
         this.#email = email;
     }
-    
-    get id() {
-        return this.#id
-    }
-    set id(id) {
-        this.#id = id
-    }
-    
+        
     get cpf() {
         return this.#cpf
     }
@@ -51,8 +42,7 @@ export default class Cliente {
     }
         
     toString() { 
-        return `
-            ID: ${this.#id}\n
+        return `            
             CPF: ${this.#cpf}\n
             Nome: ${this.#nome}\n
             Telefone: ${this.#telefone}\n
@@ -62,7 +52,6 @@ export default class Cliente {
         
     toJSON() {
         return {
-            id: this.#id,
             cpf: this.#cpf,
             nome: this.#nome,
             telefone: this.#telefone,
@@ -90,8 +79,8 @@ export default class Cliente {
         return await clienteDAO.consultar();
     }
 
-    async consultarID(id) {
+    async consultarCPF(cpf) {
         const clienteDAO = new ClienteDAO();
-        return await clienteDAO.consultarID(id);
+        return await clienteDAO.consultarCPF(cpf);
     }
 }

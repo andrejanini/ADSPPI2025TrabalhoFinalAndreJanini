@@ -1,10 +1,15 @@
 import express from 'express';
-import verificarAutenticacao from './middlewares/autenticar.js';
+import cors from 'cors';
 import session from 'express-session';
+import verificarAutenticacao from './middlewares/autenticar.js';
+import clienteRouter from './routes/rotaCliente.js';
+import livroRouter from './routes/rotaLivro.js';
 
 const app = express();
 const porta = 3000;
 const host = '0.0.0.0';
+
+app.use(cors({ origin: '*', }));
 
 app.use(session({
     secret: 'meuS3gr3d0',
@@ -15,14 +20,13 @@ app.use(session({
     }
 }));
 
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.post('/login', (requisicao, resposta) => {
     const usuario = requisicao.body.usuario;
     const senha = requisicao.body.senha;
-    const urlDestino = requisicao.session.urlDesino || '/index.html';
+    const urlDestino = requisicao.session.urlDestino || '/index.html';
     
     if (usuario == 'admin' && senha == 'admin') {
         requisicao.session.autenticado = true;
@@ -39,8 +43,11 @@ app.get('/logout', (requisicao, resposta) => {
 });
 
 app.use(express.static('frontend/publico'));
-
+app.use('/js', express.static('frontend/js'));
 app.use(verificarAutenticacao, express.static('frontend/privado'));
+
+app.use('/clientes', clienteRouter);
+app.use('/livros', livroRouter);
 
 app.listen(porta, host, () => {
     console.log(`Servidor em execução em http://${host}:${porta}`);
